@@ -1,0 +1,119 @@
+.btn-fixed.botao {
+    position: fixed;
+    right: 30px;
+    visibility: hidden;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.btn-fixed.visible {
+    visibility: visible;
+}
+
+body::-webkit-scrollbar {
+    width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+    background: #00022E;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #243757;
+    border-radius: 10px;
+}
+
+.bg-blue {
+    background-color: #00022E;
+}
+
+.mt-n1 {
+    margin-top: 10rem !important;
+}
+
+.containerGit {
+    flex-direction: column;
+    width: 40rem;
+}
+
+.containerInput {
+    flex-direction: column;
+    border: 3px solid #00022E;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+input[type="text"] {
+    width: 400px;
+    margin: auto;
+    text-align: center;
+}
+
+button {
+    width: 100px;
+    border-radius: 5px !important;
+    margin: 0 5px !important;
+    background-color: #243757;
+    color: white;
+    border: none;
+}
+
+.containerInfos {
+    padding: 10px;
+    border: 3px solid #00022E;
+    border-radius: 5px;
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-areas:
+    "header header header"
+    "aside aside footer"
+    "main main main";
+}
+
+.o-header {
+    grid-area: header;
+}
+
+.o-aside {
+    grid-area: aside;
+}
+
+.o-main {
+    grid-area: main;
+}
+
+.o-footer {
+    grid-area: footer;
+}
+
+.o-header, .o-aside, .o-main, .o-footer {
+    background: #ffffff;
+    color: #000000;
+}
+
+footer {
+    position: relative;
+    bottom: 0;
+    flex-direction: row;
+}
+
+.ContainerFooter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.LinkFooter {
+    color: #000000;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.LinkFooter:hover {
+    color: #243757;
+    transition: 2ms;
+}

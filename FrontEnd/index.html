@@ -11,7 +11,7 @@
 </head>
 <body>
     <nav class="navbar col py-3 px-md-5 fixed-top navbar-dark bg-blue">
-        <a class="navbar-brand" href="#">Vinicius Guilherme Batista</a>
+        <a class="navbar-brand" href="#">Vinicius Batista</a>
         <a class="navbar-brand btn-fixed botao" href="#top">
             Voltar para o topo
         </a>
@@ -29,7 +29,7 @@
             <div class="mt-n1 containerInfos">
                 <div id="Nome" class="o-header">Nome: </div>
                 <div class="o-main d-flex justify-content-center">
-                    <img id="Imagem" class="imagemGit" src=""></img>
+                    <img id="Imagem" class="imagemGit" src="assets/github.png"></img>
                 </div>
                 <div id="Registro" class="o-aside">Data De Registro: </div>
                 <div id="Repos" class="o-footer">Quantidade de repositórios: </div>
@@ -59,37 +59,46 @@
 
             var valorInput = document.getElementById("textinput").value;
 
-            $.get(`https://api.github.com/users/${valorInput}`, function(data) {
-                const Dados = JSON.parse(data)
+            $.ajax({
+                type: "GET",
+                url: `https://api.github.com/users/${valorInput}`,
+                dataType: "jsonp",
+                success: function(data) {
+                    const Dados = data["data"]
 
-                const Nome = Dados["name"]
-                const Imagem = Dados["avatar_url"]
-                const Registro = Dados["created_at"]
-                const QuantRepos = Dados["public_repos"]
+                    const Nome = Dados["name"]
+                    const Imagem = Dados["avatar_url"]
+                    const Registro = Dados["created_at"]
+                    const QuantRepos = Dados["public_repos"]
 
-                var NomeElemento = document.getElementById('Nome');
-                var ImagemElemento = document.getElementById('Imagem')
-                var RegistroElemento = document.getElementById('Registro');
-                var QuantReposElemento = document.getElementById('Repos');
+                    var NomeElemento = document.getElementById('Nome');
+                    var ImagemElemento = document.getElementById('Imagem')
+                    var RegistroElemento = document.getElementById('Registro');
+                    var QuantReposElemento = document.getElementById('Repos');
 
-                NomeElemento.innerHTML = "Nome: " + Nome
-                ImagemElemento.setAttribute("src", Imagem)
-                RegistroElemento.innerHTML = "Data de Registro: " + Registro
-                QuantReposElemento.innerHTML = "Quantidade de repositórios: " + QuantRepos
-            });
+                    NomeElemento.innerHTML = "Nome: " + Nome
+                    ImagemElemento.setAttribute("src", Imagem)
+                    RegistroElemento.innerHTML = "Data de Registro: " + Registro
+                    QuantReposElemento.innerHTML = "Quantidade de repositórios: " + QuantRepos
+                }
+            })
         });
 
         $("button.Salvar").click(function() {
 
             var valorInput = document.getElementById("textinput").value;
 
-            $.post("http://127.0.0.1:8000/api/salvar"),
-            {
-                "GitHub_Username": `${valorInput}`
-            },
-            function(data) {
-                console.log(data)
-            }
+            var data = { GitHub_Username: valorInput }
+
+            $.ajax({
+                type: "POST",
+                url: "http://127.0.0.1:8000/api/salvar",
+                data: data,
+                dataType: "jsonp",
+                success: function(response) {
+                    alert("Hello")
+                }
+            })
         })
     </script>
 </body>

@@ -117,3 +117,40 @@ footer {
     color: #243757;
     transition: 2ms;
 }
+
+@media (max-width: 544px) {
+	.ContainerFooter {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .containerGit {
+        flex-direction: column;
+        width: 30rem;
+    }
+
+    #Imagem {
+        width: 90%;
+        height: 90%;
+    }
+}
+
+@media (max-width: 420px) {
+    .containerGit {
+        flex-direction: column;
+        width: 20rem;
+    }
+
+    #Imagem {
+        width: 80%;
+        height: 80%;
+    }
+
+    input[type="text"] {
+        width: 200px;
+        margin: auto;
+        text-align: center;
+    }
+}

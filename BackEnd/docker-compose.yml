@@ -1,0 +1,15 @@
+services:  
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: Hsist
+    ports:
+    - 3306:3306
+  
+  phpmyadmin:
+    image: phpmyadmin:latest
+    ports:
+      - 9000:80
+    environment:
+      - PMA_ARBITRARY=1
